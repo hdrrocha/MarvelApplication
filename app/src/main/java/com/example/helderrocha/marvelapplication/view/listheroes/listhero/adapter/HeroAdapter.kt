@@ -1,4 +1,4 @@
-package com.example.helderrocha.marvelapplication.view.listheroes.adapter
+package com.example.helderrocha.marvelapplication.view.listheroes.listhero.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,12 +12,14 @@ import kotlinx.android.synthetic.main.item_hero.view.*
 class HeroAdapter(var superHeroes: List<SuperHero>, val clickListener: ((SuperHero) -> Unit)?) : RecyclerView.Adapter<HeroAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        private val movieImageUrlBuilder = MovieImageUrlBuilder()
-
         fun bind(superHero: SuperHero, clickListener: ((SuperHero) -> Unit)?) {
             itemView.textNameHero.text = superHero.name
             itemView.textAvailable.text = superHero.comics.available.toString()
-//            itemView.setOnClickListener { clickListener(superHero)}
+            itemView.setOnClickListener {
+                if (clickListener != null) {
+                    clickListener(superHero)
+                }
+            }
             Glide.with(itemView)
                     .load("${superHero?.thumbnail?.path}/standard_medium.${superHero?.thumbnail?.extension}")
                     .into(itemView.imageHero)

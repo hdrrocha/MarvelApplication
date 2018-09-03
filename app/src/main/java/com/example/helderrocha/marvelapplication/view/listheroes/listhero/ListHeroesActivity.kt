@@ -1,4 +1,4 @@
-package com.example.helderrocha.marvelapplication.view.listheroes
+package com.example.helderrocha.marvelapplication.view.listheroes.listhero
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -10,7 +10,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.example.helderrocha.marvelapplication.R
 import com.example.helderrocha.marvelapplication.model.SuperHero
-import com.example.helderrocha.marvelapplication.view.listheroes.adapter.HeroAdapter
+import com.example.helderrocha.marvelapplication.view.listheroes.hero.HeroActivity
+import com.example.helderrocha.marvelapplication.view.listheroes.listhero.adapter.HeroAdapter
 import com.example.helderrocha.marvelapplication.view_model.CharactersViewModel
 import com.example.helderrocha.marvelapplication.view_model.ViewModelFactory
 import dagger.android.AndroidInjection
@@ -42,7 +43,7 @@ class ListHeroesActivity : AppCompatActivity() {
         setContentView(R.layout.list_heroes_activity)
 
         charactersViewModel.data.observe(this, ItemsObserver)
-        charactersViewModel.getMoreMovies(page)
+        charactersViewModel.getHeroes(page)
     }
 
     private fun onItemsFetched(list: List<SuperHero>?) {
@@ -50,7 +51,6 @@ class ListHeroesActivity : AppCompatActivity() {
             loading = true
             setUpdateAdapter(list)
         }
-
     }
 
     private fun setUpdateAdapter(heroes: List<SuperHero>){
@@ -84,7 +84,7 @@ class ListHeroesActivity : AppCompatActivity() {
                             page++
                             var offSet: Long
                             offSet = page++
-                            charactersViewModel.getMoreMovies(offSet*7L)
+                            charactersViewModel.getHeroes(offSet*10L)
                         }
                     }
                 }
@@ -98,7 +98,10 @@ class ListHeroesActivity : AppCompatActivity() {
     }
 
     private fun partItemClicked(superHero : SuperHero) {
-        //TO DO
+        val intent = Intent(this, HeroActivity::class.java)
+        var idOrganization = superHero.id.toString()
+        intent.putExtra("superHero", idOrganization)
+        startActivity(intent)
     }
 
 }

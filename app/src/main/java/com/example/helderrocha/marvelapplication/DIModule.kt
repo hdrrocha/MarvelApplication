@@ -2,7 +2,8 @@ package com.example.helderrocha.marvelapplication
 
 import android.content.Context
 import com.example.helderrocha.marvelapplication.api.NetworkModule
-import com.example.helderrocha.marvelapplication.view.listheroes.ListHeroesActivity
+import com.example.helderrocha.marvelapplication.view.listheroes.hero.HeroActivity
+import com.example.helderrocha.marvelapplication.view.listheroes.listhero.ListHeroesActivity
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -22,6 +23,8 @@ class AppModule
 abstract class AndroidInjectorsModule {
     @ContributesAndroidInjector
     abstract fun listHeroesActivity(): ListHeroesActivity
+    @ContributesAndroidInjector
+    abstract fun heroActivity(): HeroActivity
 
 }
 
