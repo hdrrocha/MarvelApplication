@@ -6,7 +6,7 @@
 
 >>Projéto criado a fim de consumir dados da API da Marvel;
 
->>Neste projéto eu ultilizei o Retofit2 para as requisições e também ultilizo o Gagger 2 para criar injeções de depêndencias e aproveitar melhor o código. Existem somente duas telas no projéto e divido as funções de requisições de ambas em View Models separados. 
+>>Neste projéto eu ultilizei o Retofit2 para as requisições e também ultilizado o Dagger 2 para criar injeções de depêndencias e aproveitar melhor o código. Existem somente duas telas no projéto e divido as funções de requisições de ambas em View Models separados. 
 
 >EN
 >>Project created to consume the Marvel API;
