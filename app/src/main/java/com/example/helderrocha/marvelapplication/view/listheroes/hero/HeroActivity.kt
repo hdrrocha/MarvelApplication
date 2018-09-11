@@ -25,9 +25,6 @@ class HeroActivity : AppCompatActivity() {
     }
     protected val ItemsObserver = Observer<List<SuperHero>>(::onItemsFetched)
 
-    var listHeroesView: MutableList<SuperHero> = mutableListOf()
-    private lateinit var adapter: HeroAdapter
-    var layoutManager = LinearLayoutManager(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -48,7 +45,6 @@ class HeroActivity : AppCompatActivity() {
 
     private fun onItemsFetched(list: List<SuperHero>?) {
         if (list != null) {
-            var superHero = list.first()
             Glide.with(this)
                     .load("${list[0]?.thumbnail?.path}/standard_medium.${list[0]?.thumbnail?.extension}")
                     .into(imageHero.imageHero)
